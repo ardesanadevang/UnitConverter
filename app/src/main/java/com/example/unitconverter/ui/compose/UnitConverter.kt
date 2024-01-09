@@ -1,6 +1,5 @@
 package com.example.unitconverter.ui.compose
 
-import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.unitconverter.data.model.Conversion
@@ -48,13 +48,12 @@ fun UnitConverter(
                     Toast.makeText(context, "Please insert value", Toast.LENGTH_LONG).show()
                 } else {
                     conversionValue = value
-                    // convert here
-                    Log.i("UNIT ", value)
                 }
             }
         }
 
         if (conversionValue.isNotEmpty()) {
+            LocalFocusManager.current.clearFocus()
             conversion.value!!.let { conv ->
                 val value = conversionValue.toDouble()
                 val multiplier = conv.ratio
@@ -68,6 +67,7 @@ fun UnitConverter(
                 mainViewModel.saveConversionResult(message1, message2)
                 ConversionResult(message1, message2, modifier)
             }
+            conversionValue = ""
         }
         ConversionHistory(conversionHistory, modifier, { item ->
             mainViewModel.deleteConversionResult(item)
