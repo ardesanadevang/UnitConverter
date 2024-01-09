@@ -1,4 +1,4 @@
-package com.example.unitconverter.compose
+package com.example.unitconverter.ui.compose
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -29,7 +29,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.unitconverter.model.Conversion
+import com.example.unitconverter.data.model.Conversion
 
 @Composable
 fun ConversionInput(conversion: Conversion, modifier: Modifier, onUnitAdded: (String) -> Unit) {

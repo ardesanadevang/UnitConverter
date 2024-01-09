@@ -1,4 +1,4 @@
-package com.example.unitconverter.model
+package com.example.unitconverter.data.model
 
 data class Conversion(
     val description: String,
