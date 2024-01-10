@@ -38,7 +38,7 @@ fun ConversionHistory(
                 Text(text = "Clear All", color = Color.Gray)
             }
         }
-        Spacer(modifier = modifier.height(20.dp))
+        Spacer(modifier = modifier.height(10.dp))
         LazyColumn(modifier = modifier.fillMaxWidth()) {
             items(
                 items = conversationHistories.value,

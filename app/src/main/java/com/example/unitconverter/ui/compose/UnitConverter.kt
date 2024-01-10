@@ -52,6 +52,9 @@ fun UnitConverter(
             }
         }
 
+        if (message1.isNotEmpty())
+            ConversionResult(message1, message2, modifier)
+
         if (conversionValue.isNotEmpty()) {
             LocalFocusManager.current.clearFocus()
             conversion.value!!.let { conv ->
@@ -65,10 +68,10 @@ fun UnitConverter(
                 message2 = "${df.format(result)} ${conv.toUnit}"
 
                 mainViewModel.saveConversionResult(message1, message2)
-                ConversionResult(message1, message2, modifier)
             }
             conversionValue = ""
         }
+        Spacer(modifier = modifier.height(20.dp))
         ConversionHistory(conversionHistory, modifier, { item ->
             mainViewModel.deleteConversionResult(item)
         }, {
