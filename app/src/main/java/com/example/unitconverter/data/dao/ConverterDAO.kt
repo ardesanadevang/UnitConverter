@@ -18,6 +18,6 @@ interface ConverterDAO {
     @Query("Delete from conversationTable")
     suspend fun deleteAll()
 
-    @Query("Select * from conversationTable")
+    @Query("Select * from conversationTable ORDER BY id DESC")
     fun fetchAll(): Flow<List<ConversionResult>>
 }

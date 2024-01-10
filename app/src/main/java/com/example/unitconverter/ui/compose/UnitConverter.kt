@@ -72,11 +72,13 @@ fun UnitConverter(
             conversionValue = ""
         }
         Spacer(modifier = modifier.height(20.dp))
-        ConversionHistory(conversionHistory, modifier, { item ->
-            mainViewModel.deleteConversionResult(item)
-        }, {
-            mainViewModel.deleteAllConversionResult()
-        })
+
+        if (conversionHistory.value.isNotEmpty())
+            ConversionHistory(conversionHistory, modifier, { item ->
+                mainViewModel.deleteConversionResult(item)
+            }, {
+                mainViewModel.deleteAllConversionResult()
+            })
     }
 
 }
